@@ -1,0 +1,26 @@
+class DBConnection {
+
+    private function __construct() {
+        echo "New object created \n";
+    }
+
+    /**
+     * @return DBConnection|null
+     */
+    public static function getInstance() {
+        static $instance = null;
+
+        if (null == $instance) {
+            $instance = new static();
+        } else {
+            echo "Using same object \n";
+        }
+
+        return $instance;
+    }
+}
+
+// index.php
+$objectA = DBConnection::getInstance();
+$objectB = DBConnection::getInstance();
+$objectC = DBConnection::getInstance();
